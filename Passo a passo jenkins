@@ -1,0 +1,4 @@
+1- docker swarm init (inicializar docker swarm)
+2- criar um arquivo docker compose para o jenkins (arquivo ja criado docker-compose-swarm.yml)
+3- docker stack deploy -c docker-compose-swarm.yml jenkins (este comando é para implementar o serviço jenkins)
+
