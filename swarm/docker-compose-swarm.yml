@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  web:
+    image: python:3.10-alpine
+    deploy:
+      replicas: 3
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+    ports:
+      - "5000:5000"
+    volumes:
+      - type: bind
+        source: ./app
+        target: /code
+    command: ["flask", "run"]
+    networks:
+      - mynet
+
+  redis:
+    image: redis:alpine
+    deploy:
+      replicas: 1
+    networks:
+      - mynet
+
+  mysql:
+    image: mysql:latest
+    deploy:
+      replicas: 1
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_DATABASE: 'localhost'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: ''
+    networks:
+      - mynet
+
+networks:
+  mynet:
