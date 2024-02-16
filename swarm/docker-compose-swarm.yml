@@ -10,7 +10,6 @@ services:
       - FLASK_RUN_HOST=0.0.0.0
     ports:
       - "5000:5000"
-    command: ["flask", "run"]
     networks:
       - mynet
 
