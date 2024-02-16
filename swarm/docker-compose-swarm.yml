@@ -11,9 +11,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - type: bind
-        source: ./app
-        target: /code
+      - /app:/code
     command: ["flask", "run"]
     networks:
       - mynet
